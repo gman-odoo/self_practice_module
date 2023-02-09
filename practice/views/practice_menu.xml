@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<odoo>
+    <menuitem id="practice_menu_root" name="Home Genie">
+        <menuitem id="practice_first_level_menu" name="Customer">
+            <menuitem id="practice_model_menu_action" action="customer_details_action" name="Details"/>
+            
+        </menuitem>
+    </menuitem>
+</odoo>

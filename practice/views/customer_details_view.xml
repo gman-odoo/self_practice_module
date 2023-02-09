@@ -1,0 +1,92 @@
+<?xml version="1.0"?>
+<odoo>
+    <record id="customer_details_action" model="ir.actions.act_window">
+        <field name="name">Title</field>
+        <field name="res_model">customer_details</field>
+        <field name="view_mode">tree,form</field>
+        
+    </record> 
+    <record id="customer_details_view_tree" model="ir.ui.view">
+        <field name="name"> Title</field>
+        <field name="model">customer_details</field>
+        <field name="arch" type="xml">
+            <tree string="Channel">
+                <field name="name"/>
+                <field name="description"/>
+                <field name="service"/> 
+                <field name="date_of_service"/>
+                <field name="progress"/> 
+           </tree>
+        </field>
+    </record>
+
+     <record id="customer_details_view_form" model="ir.ui.view">
+        <field name="name">customer_details_view_form</field>
+        <field name="model">customer_details</field>
+        <field name="arch" type="xml">
+            <form string="New">
+                <sheet>
+                    <header>
+                        <field name="progress" widget="statusbar" options="{'clickable':'1'}"/>
+                    </header>
+                    <group>
+                        <h1><field name="name"/></h1>
+                    </group>
+                    <group>
+                        <group>
+                            <field name="description"/>
+                        </group>
+                        <group>
+                            <field name="service"/>
+                            <field name="date_of_service"/>
+                            <field name="schedule"/>
+                            <field name="active"/>
+                        </group>
+                   
+                        <notebook>
+                            <page string="Address">
+                                <group>
+                                    <group>
+                                        <field name="address"/>
+                                        <field name="city"/>
+                                        <field name="state"/>
+                                        <field name="country"/>
+                                        <field name="pincode"/>
+                                    </group>
+                               </group>
+                            </page>
+                            <page string="Payment">
+                                <group>
+                                    <group>
+                                        <field name="payment"/>
+                                    </group>
+                                </group>
+                           </page>
+                        </notebook>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="customer_details_search" model="ir.ui.view">
+        <field name="name">customer_details_search</field>
+        <field name="model">customer_details</field>
+        <field name="arch" type="xml">
+            <search string="Search">
+                
+                <field name="name"/>
+                <field name="city" />
+                <field name="state" />
+                <field name="country"/>
+                <field name="pincode"/>
+                <field name="date_of_service"/>
+                <field name="service"/>
+                <filter string="Service Started" name="service_started" domain="[('progress', 'in', ['new','received'])]"/>
+                <group expand="1" string="Group By">
+                    <filter string="Service" name="service" context="{'group_by':'service'}"/>
+                </group> 
+            </search>
+        </field>
+    </record> 
+</odoo>
