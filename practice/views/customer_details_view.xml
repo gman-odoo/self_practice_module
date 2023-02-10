@@ -13,7 +13,7 @@
             <tree string="Channel">
                 <field name="name"/>
                 <field name="description"/>
-                <field name="service"/> 
+                <field name="service_id"/> 
                 <field name="date_of_service"/>
                 <field name="progress"/> 
            </tree>
@@ -29,18 +29,25 @@
                     <header>
                         <field name="progress" widget="statusbar" options="{'clickable':'1'}"/>
                     </header>
+                    <field name="image" widget="image" class="oe_avatar"/>
+                    <div class="oe_title">
+                        <h1><field name="name" placeholder="Name"/></h1>
+                    </div>
+                   
                     <group>
-                        <h1><field name="name"/></h1>
-                    </group>
-                    <group>
-                        <group>
-                            <field name="description"/>
-                        </group>
-                        <group>
-                            <field name="service"/>
-                            <field name="date_of_service"/>
-                            <field name="schedule"/>
-                            <field name="active"/>
+                        <group col="2">
+                            <group>
+                               
+                                <field name="description"/>
+                                <field name="service_id"/>
+                            </group>
+                            <group>
+                                <field name="date_of_service"/>
+                                <field name="schedule"/>
+                                <field name="active"/>
+                               
+                            </group>
+                    
                         </group>
                    
                         <notebook>
@@ -81,10 +88,10 @@
                 <field name="country"/>
                 <field name="pincode"/>
                 <field name="date_of_service"/>
-                <field name="service"/>
+                <field name="service_id"/>
                 <filter string="Service Started" name="service_started" domain="[('progress', 'in', ['new','received'])]"/>
                 <group expand="1" string="Group By">
-                    <filter string="Service" name="service" context="{'group_by':'service'}"/>
+                    <filter string="Service" name="service" context="{'group_by':'service_id'}"/>
                 </group> 
             </search>
         </field>

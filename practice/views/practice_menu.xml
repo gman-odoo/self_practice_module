@@ -5,5 +5,12 @@
             <menuitem id="practice_model_menu_action" action="customer_details_action" name="Details"/>
             
         </menuitem>
+        <menuitem id="practice_first_level_menu2" name="Settings">
+            <menuitem id="practice_model_menu_action2" action="service_type_action" name="Service type"/>
+        </menuitem>
+        <menuitem id="practice_first_level_menu3" name="Service">
+            <menuitem id="practice_model_menu_action3" action="service_details_action" name="Service Details"/>
+            <menuitem id="practice_model_menu_action4" action="employee_details_action" name="Service Provider Details"/>
+        </menuitem>
     </menuitem>
 </odoo>
