@@ -20,5 +20,5 @@ class CustomerDetails(models.Model):
     help="Select the progress")
     active=fields.Boolean('Active',default=True)
     service_id=fields.Many2one("service_type", string="service type")
-    image=fields.Image()
+    image=fields.Binary("image")
 

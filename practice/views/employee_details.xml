@@ -1,13 +1,78 @@
-<record id="employee_details_action" model="ir.actions.act_window">
+<?xml version="1.0"?>
+<odoo>
+  <record id="employee_details_action" model="ir.actions.act_window">
         <field name="name">Service Providers</field>
-        <field name="type">ir.actions.act_window</field>
-        <field name="res_model">res.partner</field>
+        <field name="res_model">employee_details</field>
         <field name="view_mode">tree,form</field>
-        <field name="help" type="html">
-          <p class="o_view_nocontent_smiling_face">
-            Create a Contact in your address book
-          </p><p>
-            Odoo helps you track all activities related to your contacts.
-          </p>
+  </record>
+  <record id="employee_details_view_tree" model="ir.ui.view">
+        <field name="name"> Title</field>
+        <field name="model">employee_details</field>
+        <field name="arch" type="xml">
+            <tree string="Channel">
+                <field name="name"/>
+                <field name="description"/>
+                <field name="job_position"/> 
+                <field name="phone_number"/>
+                <field name="email"/> 
+           </tree>
         </field>
-</record>
+    </record>
+    <record id="employee_details_view_form" model="ir.ui.view">
+        <field name="name">employee_details_view_form</field>
+        <field name="model">employee_details</field>
+        <field name="arch" type="xml">
+            <form string="New">
+                <sheet>
+                    <field name="image" widget="image" class="oe_avatar"/>
+                    <div class="oe_title">
+                        <h1><field name="name" placeholder="Name"/></h1>
+                    </div>
+                   
+                    <group>
+                        <group col="2">
+                            <group>
+                               
+                                <field name="description"/>
+                                <field name="job_position"/>
+                                <field name="email"/>
+                                <field name="phone_number"/>
+                            </group>
+                            <group>
+                                <field name="tags"/>
+                                <field name="customer_id"/>
+                                <field name="active"/>
+                               
+                            </group>
+                    
+                        </group>
+                   
+                        <notebook>
+                            <page string="Bank details">
+                                <group>
+                                    <group>
+                                        <field name="payment_terms"/>
+                                        <field name="bank"/>
+                                        <field name="account_number"/>
+                                    </group>
+                               </group>
+                            </page>
+                            <page string="Customer Ratings">
+                                <group>
+                                    <group>
+                                        <field name="tip_recieved"/>
+                                    </group>
+                                </group>
+                           </page>
+                        </notebook>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+
+   
+    
+    
+</odoo>
