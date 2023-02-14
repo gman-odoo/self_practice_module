@@ -1,15 +1,18 @@
 <?xml version="1.0"?>
 <odoo>
     <menuitem id="practice_menu_root" name="Home Genie">
-        <menuitem id="practice_first_level_menu" name="Customer">
+        <menuitem id="practice_first_level_menu" name="Customer" sequence="1">
             <menuitem id="practice_model_menu_action" action="customer_details_action" name="Details"/>
             
         </menuitem>
-        <menuitem id="practice_first_level_menu2" name="Settings">
-            <menuitem id="practice_model_menu_action2" action="service_type_action" name="Service type"/>
-        </menuitem>
-        <menuitem id="practice_first_level_menu3" name="Service">
+       
+        <menuitem id="practice_first_level_menu3" name="Service" sequence="2">
             <menuitem id="practice_model_menu_action4" action="employee_details_action" name="Service Provider Details"/>
+        </menuitem>
+
+         <menuitem id="practice_first_level_menu2" name="Settings" sequence="3">
+            <menuitem id="practice_model_menu_action2" action="service_type_action" name="Service type"/>
+            <menuitem id="practice_model_menu_action3" action="employee_action_tags" name="Employee tags"/>
         </menuitem>
     </menuitem>
 </odoo>

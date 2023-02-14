@@ -21,4 +21,5 @@ class CustomerDetails(models.Model):
     active=fields.Boolean('Active',default=True)
     service_id=fields.Many2one("service_type", string="service type")
     image=fields.Binary("image")
+    service_provider_ids=fields.One2many('employee_details','customer_id',required=True)
 

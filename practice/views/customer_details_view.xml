@@ -69,6 +69,11 @@
                                     </group>
                                 </group>
                            </page>
+                           <page string="Service provider">
+                                <group>
+                                    <field name="service_provider_ids"/>
+                                </group>
+                           </page>
                         </notebook>
                     </group>
                 </sheet>
@@ -96,4 +101,5 @@
             </search>
         </field>
     </record> 
+     
 </odoo>

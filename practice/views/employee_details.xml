@@ -1,21 +1,21 @@
 <?xml version="1.0"?>
 <odoo>
-  <record id="employee_details_action" model="ir.actions.act_window">
+    <record id="employee_details_action" model="ir.actions.act_window">
         <field name="name">Service Providers</field>
         <field name="res_model">employee_details</field>
         <field name="view_mode">tree,form</field>
-  </record>
-  <record id="employee_details_view_tree" model="ir.ui.view">
+    </record>
+    <record id="employee_details_view_tree" model="ir.ui.view">
         <field name="name"> Title</field>
         <field name="model">employee_details</field>
         <field name="arch" type="xml">
             <tree string="Channel">
-                <field name="name"/>
-                <field name="description"/>
-                <field name="job_position"/> 
-                <field name="phone_number"/>
-                <field name="email"/> 
-           </tree>
+                <field name="name" />
+                <field name="description" />
+                <field name="availibility" />
+                <field name="phone_number" />
+                <field name="email" />
+            </tree>
         </field>
     </record>
     <record id="employee_details_view_form" model="ir.ui.view">
@@ -24,46 +24,66 @@
         <field name="arch" type="xml">
             <form string="New">
                 <sheet>
-                    <field name="image" widget="image" class="oe_avatar"/>
+                    <header>
+
+                        <field name="availibility" widget="statusbar" options="{'clickable':'1'}" />
+                    </header>
+
                     <div class="oe_title">
-                        <h1><field name="name" placeholder="Name"/></h1>
+                        <h1>
+                            <field name="name" placeholder="Name" />
+                        </h1>
                     </div>
-                   
+                    <group>
+
+
+                        <h2>
+                            <field name="description" placeholder="Description" />
+                            <field name="tag_ids" widget="many2many_tags" />
+                        </h2>
+
+
+                        <group>
+                            <field name="image" widget="image" />
+                        </group>
+                    </group>
+
                     <group>
                         <group col="2">
                             <group>
-                               
-                                <field name="description"/>
-                                <field name="job_position"/>
-                                <field name="email"/>
-                                <field name="phone_number"/>
+
+
+                                <field name="job_position" />
+                                <field name="service_type" />
+                                <field name="email" />
+                                <field name="phone_number" />
                             </group>
                             <group>
-                                <field name="tags"/>
-                                <field name="customer_id"/>
-                                <field name="active"/>
-                               
+
+                                <field name="customer_id" />
+                                <field name="active" />
+
                             </group>
-                    
+
                         </group>
-                   
+
                         <notebook>
                             <page string="Bank details">
                                 <group>
                                     <group>
-                                        <field name="payment_terms"/>
-                                        <field name="bank"/>
-                                        <field name="account_number"/>
+                                        <field name="payment_terms" />
+                                        <field name="bank" />
+                                        <field name="account_number" />
                                     </group>
-                               </group>
+                                </group>
                             </page>
                             <page string="Customer Ratings">
                                 <group>
                                     <group>
-                                        <field name="tip_recieved"/>
+                                        <field name="tip_recieved" />
                                     </group>
                                 </group>
-                           </page>
+                            </page>
                         </notebook>
                     </group>
                 </sheet>
@@ -72,7 +92,4 @@
     </record>
 
 
-   
-    
-    
 </odoo>

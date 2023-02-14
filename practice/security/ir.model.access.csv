@@ -2,3 +2,4 @@ id,name,model_id/id,group_id/id,perm_read,perm_write,perm_create,perm_unlink
 access_customer_details,access_customer_details,model_customer_details,base.group_user,1,1,1,1
 access_service_type,access_service_type,model_service_type,base.group_user,1,1,1,1
 access_employee_details,access_employee_details,model_employee_details,base.group_user,1,1,1,1
+access_employee_tag,access_employee_tag,model_employee_tag,base.group_user,1,1,1,1
