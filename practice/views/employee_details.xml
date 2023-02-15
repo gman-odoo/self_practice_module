@@ -54,7 +54,7 @@
 
 
                                 <field name="job_position" />
-                                <field name="service_type" />
+                                <field name="service_id" />
                                 <field name="email" />
                                 <field name="phone_number" />
                             </group>
@@ -90,6 +90,31 @@
             </form>
         </field>
     </record>
+    <record id="employee_details_search" model="ir.ui.view">
+        <field name="name">employee_details_search</field>
+        <field name="model">employee_details</field>
+        <field name="arch" type="xml">
+            <search string="Search">
+                
+                <field name="name"/>
+                <field name="job_position" />
+                <field name="phone_number"/>
+                <field name="email"/>
+                <field name="languages"/>
+                <field name="bank"/>
+                <field name="account_number"/>
+                <field name="availibility"/>
+                <field name="tag_ids"/>
+                <field name="service_id"/>
+                <filter string="Check Availibility" name="availibility" domain="[('availibility','=','available')]"/>
+                <group expand="1" string="Group By">
+                    <filter name="service" string="job position" context="{'group_by':'job_position'}"/>
+
+                </group>
+
+            </search>
+        </field>
+    </record> 
 
 
 </odoo>

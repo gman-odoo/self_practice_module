@@ -95,8 +95,12 @@
                 <field name="date_of_service"/>
                 <field name="service_id"/>
                 <filter string="Service Started" name="service_started" domain="[('progress', 'in', ['new','received'])]"/>
+                
                 <group expand="1" string="Group By">
                     <filter string="Service" name="service" context="{'group_by':'service_id'}"/>
+                    <separator></separator>
+                    <filter string="Service date" name="service_date" context="{'group_by':'date_of_service'}"/>
+
                 </group> 
             </search>
         </field>

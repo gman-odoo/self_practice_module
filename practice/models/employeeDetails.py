@@ -20,7 +20,7 @@ class EmployeeDetails(models.Model):
     active=fields.Boolean('Active',default=True)
     availibility=fields.Selection(selection=[('work','Work In Progress'),('available','Available')])
     tag_ids=fields.Many2many('employee_tag',string="Tags")
-    service_type=fields.Many2one('service_type',string="Service Provided")
+    service_id=fields.Many2one('service_type',string="Service Provided")
 
 
      
