@@ -1,5 +1,5 @@
 
-from odoo import models,fields
+from odoo import models,fields,api
 
 class EmployeeDetails(models.Model):
     _name = "employee_details"
@@ -16,11 +16,15 @@ class EmployeeDetails(models.Model):
     geo_location=fields.Text()
     image=fields.Image()
     customer_id=fields.Many2one('customer_details')
-    tip_recieved =fields.Integer()
+    tip_recieved=fields.Integer(compute="_compute_total_tip",store=True)
     active=fields.Boolean('Active',default=True)
     availibility=fields.Selection(selection=[('work','Work In Progress'),('available','Available')])
     tag_ids=fields.Many2many('employee_tag',string="Tags")
     service_id=fields.Many2one('service_type',string="Service Provided")
+    @api.depends('tip_recieved','customer_id.send_tip')
+    def _compute_total_tip(self):
+        for record in self:
+            record.tip_recieved=record.tip_recieved+record.customer_id.send_tip
 
 
      

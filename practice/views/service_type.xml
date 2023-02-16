@@ -5,6 +5,16 @@
         <field name="res_model">service_type</field>
         <field name="view_mode">tree,form</field>
     </record> 
+    <record id="service_type_action_view_tree" model="ir.ui.view">
+        <field name="name"> Title</field>
+        <field name="model">service_type</field>
+        <field name="arch" type="xml">
+            <tree string="Channel" editable="bottom">
+                <field name="name" />
+                <field name="price_per_hour" />
+            </tree>
+        </field>
+    </record>
     
     
 </odoo>
