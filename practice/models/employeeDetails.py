@@ -16,6 +16,7 @@ class EmployeeDetails(models.Model):
     geo_location=fields.Text()
     image=fields.Image()
     customer_id=fields.Many2one('customer_details')
+    
     tip_recieved=fields.Integer(compute="_compute_total_tip",store=True)
     active=fields.Boolean('Active',default=True)
     availibility=fields.Selection(selection=[('work','Work In Progress'),('available','Available')])
@@ -25,6 +26,8 @@ class EmployeeDetails(models.Model):
     def _compute_total_tip(self):
         for record in self:
             record.tip_recieved=record.tip_recieved+record.customer_id.send_tip
+    
+               
 
 
      
