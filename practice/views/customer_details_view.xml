@@ -76,7 +76,14 @@
                            </page>
                            <page string="Service provider">
                                 <group>
-                                    <field name="service_provider_ids"/>
+                                    <!-- field name="service_provider_ids">
+                                        <tree string="channel">
+                                            <field name="name"/>
+                                            <field name="service_id"/>
+                                        </tree>
+                                    </field> -->
+                                    <field name="available_service_providers"/>
+                                    
                                 </group>                    
                            </page>
                         </notebook>

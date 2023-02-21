@@ -9,10 +9,40 @@
         <field name="name"> Title</field>
         <field name="model">service_type</field>
         <field name="arch" type="xml">
-            <tree string="Channel" editable="bottom">
+            <tree string="Channel">
                 <field name="name" />
                 <field name="price_per_hour" />
             </tree>
+        </field>
+    </record>
+
+    <record id="service_type_action_view_form" model="ir.ui.view">
+        <field name="name">service_type_action_view_form</field>
+        <field name="model">service_type</field>
+        <field name="arch" type="xml">
+            <form string="Service Type">
+                <sheet>
+                    <div class="oe_title">
+                        <h1><field nolabel="1" name="name"/></h1>
+                        
+                    </div>
+                    <h2><field name="price_per_hour" string="Price per hour" /></h2>
+                    <notebook>
+                        <page string="Service Providers">
+                            <field name="emp_ids">
+                                <tree string="Typess" editable="bottom">
+                                    <field name="name" string="Name"/>
+                                    <field name="tag_ids" string="Tags" widget="many2many_tags" options="{'color_field':'color'}"/>
+                                    <field name="phone_number" string="Phone Number"/>
+                                    
+                                
+                                </tree>
+                            </field>
+
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
         </field>
     </record>
     

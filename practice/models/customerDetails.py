@@ -29,8 +29,8 @@ class CustomerDetails(models.Model):
     age = fields.Integer(compute="_compute_age")
     date_of_birth = fields.Date()
     send_tip=fields.Integer()
-    """ available_service_providers=fields.Char(compute="_compute_available_service_providers")
-     """
+    available_service_providers=fields.Char(compute="_compute_available_service_providers")
+    
 
 
     @api.depends('age', 'date_of_birth')
@@ -56,13 +56,13 @@ class CustomerDetails(models.Model):
                 
             else:
                 record.payment=False
-"""  @api.depends('service_provider_ids')
+    """ @api.depends('service_provider_ids','service_id')
     def _compute_available_service_providers(self):
         for record in self:
-            if(record.service_provider_ids.mapped('availibility')=='available'):
+            if(record.service_provider_ids.service_id==record.service_id):
                 record.available_service_providers=record.service_provider_ids.name
             else:
-                record.available_service_providers="Not available" """
-    
+                record.available_service_providers="none" """
+            
 
                
