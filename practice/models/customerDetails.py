@@ -29,7 +29,8 @@ class CustomerDetails(models.Model):
     age = fields.Integer(compute="_compute_age")
     date_of_birth = fields.Date()
     send_tip=fields.Integer()
-    available_service_providers=fields.Char(compute="_compute_available_service_providers")
+    rating_count=fields.Integer()
+    
     
 
 
@@ -63,6 +64,9 @@ class CustomerDetails(models.Model):
                 record.available_service_providers=record.service_provider_ids.name
             else:
                 record.available_service_providers="none" """
+    def action_customer_rating(self):
+        for record in self:
+            record.rating_count
             
 
                

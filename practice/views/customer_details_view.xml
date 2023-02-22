@@ -4,88 +4,99 @@
         <field name="name">Title</field>
         <field name="res_model">customer_details</field>
         <field name="view_mode">tree,form</field>
-        
-    </record> 
+
+    </record>
     <record id="customer_details_view_tree" model="ir.ui.view">
         <field name="name"> Title</field>
         <field name="model">customer_details</field>
         <field name="arch" type="xml">
             <tree string="Channel">
-                <field name="name"/>
-                <field name="description"/>
-                <field name="service_id"/> 
-                <field name="date_of_service"/>
-                <field name="progress"/> 
-           </tree>
+                <field name="name" />
+                <field name="description" />
+                <field name="service_id" />
+                <field name="date_of_service" />
+                <field name="progress" />
+            </tree>
         </field>
     </record>
 
-     <record id="customer_details_view_form" model="ir.ui.view">
+    <record id="customer_details_view_form" model="ir.ui.view">
         <field name="name">customer_details_view_form</field>
         <field name="model">customer_details</field>
         <field name="arch" type="xml">
             <form string="New">
                 <header>
-                    <field name="progress" widget="statusbar" options="{'clickable':'1'}"/>
+                    <field name="progress" widget="statusbar" options="{'clickable':'1'}" />
                 </header>
                 <sheet>
-                    <field name="image" widget="image" class="oe_avatar"/>
+                    <field name="image" widget="image" class="oe_avatar" />
                     <div class="oe_title">
-                        <h1><field name="name" placeholder="Name"/></h1>
+                        <h1>
+                            <field name="name" placeholder="Name" />
+                        </h1>
                     </div>
-                   
+
                     <group>
                         <group col="2">
                             <group>
-                               
-                                <field name="description"/>
-                                <field name="service_id"/>
+
+                                <field name="description" />
+                                <field name="service_id" />
                             </group>
                             <group>
-                                <field name="date_of_service"/>
-                                <field name="schedule"/>
-                                <field name="active"/>
-                                <field name="age"/>>
-                                <field name="date_of_birth"/>>
-                               
-                            </group>
-                    
+                                <field name="date_of_service" />
+                                <field name="schedule" />
+                                <field
+                                    name="active" />
+                                <field name="age" />> <field
+                                    name="date_of_birth" />> </group>
+
                         </group>
-                   
+
                         <notebook>
                             <page string="Address">
                                 <group>
                                     <group>
-                                        <field name="address"/>
-                                        <field name="city"/>
-                                        <field name="state"/>
-                                        <field name="country"/>
-                                        <field name="pincode"/>
+                                        <field name="address" />
+                                        <field name="city" />
+                                        <field name="state" />
+                                        <field name="country" />
+                                        <field name="pincode" />
                                     </group>
-                               </group>
+                                </group>
                             </page>
                             <page string="Payment">
                                 <group>
                                     <group>
-                                        <field name="payment"/>
-                                        <field name="no_of_hours"/>>
-                                        <field name="cost_service" />
-                                        <field name="send_tip"/>>
-                                    </group>
+                                        <field name="payment" />
+                                        <field name="no_of_hours" />> <field
+                                            name="cost_service" />
+                                        <field name="send_tip" />> </group>
                                 </group>
-                           </page>
-                           <page string="Service provider">
+                            </page>
+                            <page string="Service provider">
                                 <group>
-                                    <!-- field name="service_provider_ids">
+                                    <field name="service_provider_ids">
                                         <tree string="channel">
-                                            <field name="name"/>
-                                            <field name="service_id"/>
+                                            <field name="name" />
+                                            <field name="service_id" />
                                         </tree>
-                                    </field> -->
-                                    <field name="available_service_providers"/>
-                                    
-                                </group>                    
-                           </page>
+                                    </field>
+
+
+                                </group>
+                            </page>
+                            <page string="Ratings">
+                                <group>
+                                    <button name="action_customer_rating"
+                                        type="object"
+                                        class="oe_stat_button" icon="fa-smile-o">
+                                        <field name="rating_count" string="Rating" widget="statinfo" />
+                                    </button>
+
+
+                                </group>
+                            </page>
                         </notebook>
                     </group>
                 </sheet>
@@ -93,29 +104,32 @@
         </field>
     </record>
 
+
     <record id="customer_details_search" model="ir.ui.view">
         <field name="name">customer_details_search</field>
         <field name="model">customer_details</field>
         <field name="arch" type="xml">
             <search string="Search">
-                
-                <field name="name"/>
+
+                <field name="name" />
                 <field name="city" />
                 <field name="state" />
-                <field name="country"/>
-                <field name="pincode"/>
-                <field name="date_of_service"/>
-                <field name="service_id"/>
-                <filter string="Service Started" name="service_started" domain="[('progress', 'in', ['new','received'])]"/>
-                
-                <group expand="1" string="Group By">
-                    <filter string="Service" name="service" context="{'group_by':'service_id'}"/>
-                    <separator></separator>
-                    <filter string="Service date" name="service_date" context="{'group_by':'date_of_service'}"/>
+                <field name="country" />
+                <field name="pincode" />
+                <field name="date_of_service" />
+                <field name="service_id" />
+                <filter string="Service Started" name="service_started"
+                    domain="[('progress', 'in', ['new','received'])]" />
 
-                </group> 
+                <group expand="1" string="Group By">
+                    <filter string="Service" name="service" context="{'group_by':'service_id'}" />
+                    <separator></separator>
+                    <filter string="Service date" name="service_date"
+                        context="{'group_by':'date_of_service'}" />
+
+                </group>
             </search>
         </field>
-    </record> 
-     
+    </record>
+
 </odoo>

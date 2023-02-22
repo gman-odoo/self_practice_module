@@ -110,6 +110,8 @@
                 <filter string="Check Availibility" name="availibility" domain="[('availibility','=','available')]"/>
                 <group expand="1" string="Group By">
                     <filter name="service" string="job position" context="{'group_by':'job_position'}"/>
+                    <separator/>
+                    <filter name="service_type" string="Service Provided" context="{'group_by':'service_id'}"/>
 
                 </group>
 
