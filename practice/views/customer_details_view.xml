@@ -13,9 +13,9 @@
             <tree string="Channel">
                 <field name="name" />
                 <field name="description" />
-                <field name="service_id" />
+                <field name="service_given_id" />
                 <field name="date_of_service" />
-                <field name="progress" />
+                <field name="state" />
             </tree>
         </field>
     </record>
@@ -26,7 +26,7 @@
         <field name="arch" type="xml">
             <form string="New">
                 <header>
-                    <field name="progress" widget="statusbar" options="{'clickable':'1'}" />
+                    <field name="state" widget="statusbar" options="{'clickable':'1'}" />
                 </header>
                 <sheet>
                     <field name="image" widget="image" class="oe_avatar" />
@@ -48,8 +48,9 @@
                                 <field name="schedule" />
                                 <field
                                     name="active" />
-                                <field name="age" />> <field
-                                    name="date_of_birth" />> </group>
+                                <field name="age" /><field
+                                    name="date_of_birth" />
+                            </group>
 
                         </group>
 
@@ -79,20 +80,14 @@
                                     <field name="service_provider_ids">
                                         <tree string="channel">
                                             <field name="name" />
-                                            <field name="service_id" />
+                                            <field name="service_given_id" context="{'state':'available'}" />
+                                            <button name="action_accept" type="object"  icon="fa-check" attrs="{'invisible':[('status','in',['accepted','refused'])]}"/>
+                                            <button name="action_refused" type="object" icon="fa-times" attrs="{'invisible':[('status','in',['accepted','refused'])]}"/> 
+                                            <field name="status" attrs="{'invisible':[('status','in',['accepted','refused'])]}" nolabel="1"/>
+ 
+
                                         </tree>
                                     </field>
-
-
-                                </group>
-                            </page>
-                            <page string="Ratings">
-                                <group>
-                                    <button name="action_customer_rating"
-                                        type="object"
-                                        class="oe_stat_button" icon="fa-smile-o">
-                                        <field name="rating_count" string="Rating" widget="statinfo" />
-                                    </button>
 
 
                                 </group>
@@ -117,9 +112,9 @@
                 <field name="country" />
                 <field name="pincode" />
                 <field name="date_of_service" />
-                <field name="service_id" />
+                <field name="service_given_id" />
                 <filter string="Service Started" name="service_started"
-                    domain="[('progress', 'in', ['new','received'])]" />
+                    domain="[('state', 'in', ['new','received'])]" />
 
                 <group expand="1" string="Group By">
                     <filter string="Service" name="service" context="{'group_by':'service_id'}" />

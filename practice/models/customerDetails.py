@@ -17,7 +17,7 @@ class CustomerDetails(models.Model):
     schedule = fields.Boolean()
     active = fields.Boolean(default=True)
     payment = fields.Boolean(default=False , compute="_compute_payment")
-    progress = fields.Selection(string="Select the progress",
+    state = fields.Selection(string="Select the progress",
                                 selection=[('new', 'New'), ('received', 'Service Received'), (
                                     'inprogress', 'In Progress'), ('done', 'Done'), ('cancelled', 'Cancelled')],
                                 help="Select the progress")
@@ -25,7 +25,8 @@ class CustomerDetails(models.Model):
     service_id = fields.Many2one("service_type", string="service type")
     image = fields.Binary("image")
     service_provider_ids = fields.One2many(
-        'employee_details', 'customer_id', required=True)
+        'employee_details', 'customer_id', required=True,)
+    
     age = fields.Integer(compute="_compute_age")
     date_of_birth = fields.Date()
     send_tip=fields.Integer()
@@ -47,10 +48,10 @@ class CustomerDetails(models.Model):
                 record.age=0
     cost_service=fields.Integer()
     no_of_hours=fields.Integer()
-    @api.depends('payment','progress','service_id.price_per_hour','cost_service','no_of_hours')
+    @api.depends('payment','state','service_id.price_per_hour','cost_service','no_of_hours')
     def _compute_payment(self):
         for record in self:
-            if(record.progress=='done'):
+            if(record.state=='done'):
                 record.payment=True
                 record.cost_service=record.service_id.price_per_hour*record.no_of_hours
                 
